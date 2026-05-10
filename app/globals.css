@@ -1,0 +1,230 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --font-oswald: "Oswald", sans-serif;
+  --font-inter: "Inter", sans-serif;
+  --red: #E31837;
+  --navy: #003087;
+  --cream: #F8F4ED;
+  --amber: #F59E0B;
+  --dark: #1C1C1E;
+  --black: #000000;
+  --white: #FFFFFF;
+  --gold: #C9A84C;
+}
+
+html, body {
+  background: #000;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ─── Video Stage ────────────────────────────────────────── */
+
+/* ─── Shorts Stage (9:16) ────────────────────────────────── */
+
+.short-stage {
+  position: absolute;
+  width: 720px;
+  height: 1280px;
+  overflow: hidden;
+  background: #FAFAFA;
+  transform-origin: top center;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.short-scene {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+  text-align: center;
+}
+
+.video-wrapper {
+  position: fixed;
+  inset: 0;
+  background: #111;
+  overflow: hidden;
+}
+
+/* ─── Scene base ─────────────────────────────────────────── */
+
+.scene {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 80px 100px;
+  overflow: hidden;
+}
+
+.scene-center {
+  align-items: center;
+  text-align: center;
+}
+
+/* ─── Typography ─────────────────────────────────────────── */
+
+.f-oswald { font-family: var(--font-oswald), sans-serif; }
+.f-inter  { font-family: var(--font-inter), sans-serif; }
+
+.t-monster  { font-size: 120px; line-height: 1.0; font-weight: 700; letter-spacing: -2px; }
+.t-huge     { font-size: 88px;  line-height: 1.05; font-weight: 700; letter-spacing: -1px; }
+.t-big      { font-size: 64px;  line-height: 1.1; font-weight: 700; }
+.t-mid      { font-size: 42px;  line-height: 1.15; font-weight: 600; }
+.t-sub      { font-size: 28px;  line-height: 1.4;  font-weight: 400; }
+.t-body     { font-size: 22px;  line-height: 1.6;  font-weight: 400; }
+.t-label    { font-size: 16px;  line-height: 1.4;  font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
+.t-small    { font-size: 14px;  line-height: 1.4;  font-weight: 400; letter-spacing: 1px; text-transform: uppercase; }
+
+/* ─── Colors ─────────────────────────────────────────────── */
+
+.c-white  { color: #fff; }
+.c-red    { color: var(--red); }
+.c-navy   { color: var(--navy); }
+.c-dark   { color: var(--dark); }
+.c-amber  { color: var(--amber); }
+.c-gold   { color: var(--gold); }
+.c-grey   { color: #999; }
+.c-light  { color: rgba(255,255,255,0.65); }
+
+.bg-red   { background: var(--red); }
+.bg-navy  { background: var(--navy); }
+.bg-cream { background: var(--cream); }
+.bg-dark  { background: var(--dark); }
+.bg-amber { background: var(--amber); }
+.bg-black { background: #000; }
+.bg-white { background: #fff; }
+
+/* ─── Clip reveal helper ─────────────────────────────────── */
+
+.clip-parent { overflow: hidden; }
+
+/* ─── Controls overlay ───────────────────────────────────── */
+
+.controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 52px;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 20px;
+  z-index: 200;
+  backdrop-filter: blur(8px);
+}
+
+.ctrl-btn {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 12px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background 0.15s, border-color 0.15s;
+}
+.ctrl-btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.6); }
+.ctrl-btn.active { background: var(--red); border-color: var(--red); }
+
+.progress-track {
+  flex: 1;
+  height: 3px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 2px;
+  position: relative;
+  cursor: pointer;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--red);
+  border-radius: 2px;
+  transition: width 0.1s linear;
+}
+
+.scene-counter {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.transition-overlay {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  z-index: 150;
+  pointer-events: none;
+}
+
+/* ─── Index page ─────────────────────────────────────────── */
+
+.index-page {
+  min-height: 100vh;
+  background: #0a0a0a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+.index-title {
+  font-family: var(--font-oswald), sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.index-subtitle {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 16px;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 1px;
+}
+.video-card {
+  width: 480px;
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  padding: 32px;
+  text-decoration: none;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.video-card:hover { border-color: var(--red); transform: translateY(-2px); }
+.video-card-tag {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 11px;
+  color: var(--red);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.video-card-title {
+  font-family: var(--font-oswald), sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+.video-card-meta {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
+}
